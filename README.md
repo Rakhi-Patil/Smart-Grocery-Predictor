@@ -193,7 +193,7 @@ Precision@5 = 10.58%
 Smart-Grocery-Predictor/
 │
 |── screenshot/
-│   ├── recommendations.png
+│   └── recommendations.png
 │ 
 ├── app.py
 ├── Smart_Grocery_Project.ipynb
