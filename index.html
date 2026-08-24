@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Grocery Predictor</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="logo">
+            🛒 Smart Grocery Predictor
+        </div>
+
+        <p>
+            AI-powered personalized grocery recommendations
+        </p>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="container">
+
+        <!-- INTRODUCTION -->
+
+        <section class="hero">
+
+            <h1>
+                Find Products You'll Love
+            </h1>
+
+            <p>
+                Our hybrid recommendation system analyzes
+                customer behavior, product popularity and
+                category preferences to recommend products
+                personalized for each customer.
+            </p>
+
+        </section>
+
+
+        <!-- CUSTOMER SELECTION -->
+
+        <section class="recommendation-box">
+
+            <h2>👤 Select Customer</h2>
+
+            <form method="POST">
+
+                <select name="customer_id" required>
+
+                    <option value="">
+                        -- Select Customer ID --
+                    </option>
+
+                    {% for customer in customers %}
+
+                        <option value="{{ customer }}"
+                            {% if selected_customer == customer %}
+                                selected
+                            {% endif %}>
+
+                            {{ customer }}
+
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+
+                <button type="submit">
+                    🎯 Recommend Products
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- RECOMMENDATIONS -->
+
+        {% if recommendations %}
+
+        <section class="results">
+
+            <h2>
+                ⭐ Top 5 Recommendations
+            </h2>
+
+            <p class="customer-text">
+                Personalized recommendations for
+                <strong>{{ selected_customer }}</strong>
+            </p>
+
+
+            <div class="product-grid">
+
+                {% for item in recommendations %}
+
+                <div class="product-card">
+
+                    <div class="rank">
+                        #{{ loop.index }}
+                    </div>
+
+                    <div class="product-icon">
+                        🛍️
+                    </div>
+
+                    <h3>
+                        {{ item.product_name }}
+                    </h3>
+
+                    <p class="category">
+                        {{ item.category }}
+                    </p>
+
+                    <div class="score">
+
+                        <span>
+                            Hybrid Score
+                        </span>
+
+                        <strong>
+                            {{ "%.2f"|format(item.hybrid_score) }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+
+        <!-- MODEL INFORMATION -->
+
+        <section class="model-section">
+
+            <h2>
+                🤖 Recommendation Model
+            </h2>
+
+            <div class="model-grid">
+
+                <div class="model-card">
+
+                    <h3>60%</h3>
+
+                    <p>
+                        Collaborative Filtering
+                    </p>
+
+                    <span>
+                        Similar customer behavior
+                    </span>
+
+                </div>
+
+
+                <div class="model-card">
+
+                    <h3>20%</h3>
+
+                    <p>
+                        Product Popularity
+                    </p>
+
+                    <span>
+                        Frequently purchased products
+                    </span>
+
+                </div>
+
+
+                <div class="model-card">
+
+                    <h3>20%</h3>
+
+                    <p>
+                        Category Preference
+                    </p>
+
+                    <span>
+                        Customer's preferred categories
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PERFORMANCE -->
+
+        <section class="performance">
+
+            <h2>
+                📊 Model Performance
+            </h2>
+
+            <div class="performance-grid">
+
+                <div>
+                    <strong>100%</strong>
+                    <span>Recommendation Coverage</span>
+                </div>
+
+                <div>
+                    <strong>52.92%</strong>
+                    <span>Hit Rate@5</span>
+                </div>
+
+                <div>
+                    <strong>10.58%</strong>
+                    <span>Precision@5</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            Smart Grocery Predictor |
+            Hybrid Machine Learning Recommendation System
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
