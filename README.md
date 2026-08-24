@@ -303,12 +303,8 @@ Select a **Customer ID** and click:
 ## 🖥️ Screenshot
 
 ### ⭐ Recommendation Result
-
-
-```markdown
-<img width="3148" height="1734" alt="top%" src="https://github.com/user-attachments/assets/b3e2e821-1a90-4fad-96a2-3a7d8d088fc2" />
-
-```
+---
+<img width="3148" height="1734" alt="recommendations" src="https://github.com/user-attachments/assets/2a65a9d0-25ae-46c7-96e0-8a881b1ffe52" />
 
 ---
 
